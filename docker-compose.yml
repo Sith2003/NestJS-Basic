@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  sith-server:
+    image: nodejs
+    container_name: sith-server
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - sith-network
+
+networks:
+  sith-network:
+    driver: bridge
+    name: sith-network
+
+volumes:
+  node_modules:
